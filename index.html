@@ -54,7 +54,50 @@
     <section>
         <h1>Conference Registration Form</h1>
         <p>Required Item (*)</p>
-        <form action="http://www.example.com/cg/register" method="post"></form>
+        <form action="http://www.example.com/cg/register" method="POST">
+            <!-- Every label has an input that are connected with "for" and "id", all of the inputs have a name, id and type. Some fiels are required data so the word required is put in the input. Also, two have placeholders so that the use can have a guildline as to what is needed. a datalist was created and in order for it to render I needed the id to be connected with the list that was put into the input. The options were put in an option box with the value the same as their name. A regex was added to phone number and ACGIP so that users can input the pattern to the information correctly. -->
+            <label for="titleBox">Title</label>
+            <input type="text" name="title" id="titleBox" list="titlebox" />
+            <!-- datalist for the titlebox control. -->
+            <datalist id="titlebox">
+                <option value="Mr.">Mr.</option>
+                <option value="Mrs.">Mrs.</option>
+                <option value="Ms.">Ms.</option>
+                <option value="Prof.">Prof.</option>
+                <option value="Dr.">Dr.</option>
+                <option value="Assist Prof.">Assist Prof.</option>
+                <option value="Assoc. Prof.">Assoc. Prof.</option>
+            </datalist>
+
+            <label for="fnBox">First Name*</label>
+            <input type="text" name="firstName" id="fnBox" required />
+            <label for="lnBox">Last Name*</label>
+            <input type="text" name="lastName" id="lnBox" required />
+            <label for="addBox">Address*</label>
+            <!-- A textarea makes the input box bigger. -->
+            <textarea type="text" name="address" id="addBox" required></textarea>
+            <label for="groupBox">Company or University</label>
+            <input type="text" name="group" id="groupBox" />
+            <label for="mailBox">E-mail*</label>
+            <input type="email" name="email" id="mailBox" required />
+            <label for="phoneBox">Phone Number*</label>
+            <input type="tel" name="phoneNumber" id="phoneBox" placeholder="(nnn) nnn-nnnn" pattern="^\d{10}$|^(\(\d{3}\)\s*)?\d{3}[\s-]?\d{4}$"
+                required />
+            <label for="idBox">ACGIP Membership Number</label>
+            <input type="text" name="acgipID" id="idBox" placeholder="acgip-nnnnnn" pattern="^acgip\-\d{6}$" />
+            <!-- A selection list for Registration Category, the for and ID connect the two. The options have an alternate text for the actual option and place while the value is the name. -->
+            <label for="regList">Registration Category</label>
+            <select id="regList" name="registerType">
+                <option value="member">ACGIP Member ($695)</option>
+                <option value="nonmember">Non-Member ($795)</option>
+                <option value="student">Student ($310)</option>
+                <option value="poster">Poster ($95)</option>
+                <option value="guest">Guest ($35)</option>
+            </select>
+            <p>
+                <input type="Submit" value="continue">
+            </p>
+        </form>
 
     </section>
 
